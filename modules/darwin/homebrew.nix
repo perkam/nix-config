@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ username, ... }: {
   nix-homebrew = {
     enable = true;
-    user = "kacper";
+    user = username;
     autoMigrate = true;
   };
 

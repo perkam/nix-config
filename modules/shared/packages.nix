@@ -6,6 +6,8 @@
     fd
     wireguard-tools
     neovim
+    lunarvim
+    ripgrep
 
     nixd # nix language server
   ];
