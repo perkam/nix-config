@@ -12,7 +12,10 @@
 
   outputs = { self, nixpkgs, nix-darwin, nix-homebrew }: {
     darwinConfigurations."kacpers-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [ ./hosts/darwin/default.nix ];
+      modules = [ 
+        ./hosts/darwin/default.nix
+        ./shared/default.nix
+      ];
     };
   };
 }
