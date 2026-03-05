@@ -8,6 +8,7 @@
     neovim
     lunarvim
     ripgrep
+    gh
 
     nixd # nix language server
   ];
