@@ -4,11 +4,15 @@
   home-manager.users.${username} = { pkgs, ... }: {
     home.homeDirectory = "/Users/${username}";
 
-    home.packages = with pkgs; [
-      claude-code
-    ];
+    programs.opencode = {
+      enable = true;
+      settings = {
+        plugin = [ "opencode-gemini-auth@latest" ];
+      };
+    };
 
     programs.zsh.shellAliases = {
+      update = "sudo nix flake update --flake ~/projects/nix-config";
       rebuild = "sudo darwin-rebuild switch --flake ~/projects/nix-config; source ~/.zshrc";
     };
   };

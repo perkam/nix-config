@@ -22,11 +22,24 @@
 
         shellAliases = {
           find = "fd";
+          cat = "smart_cat";
+          nix-config = "lvim ~/projects/nix-config";
         };
 
         initExtra = ''
           export EDITOR="nvim"
           export LANG="en_US.UTF-8"
+
+          ask() {
+            opencode -m "anthropic/claude-haiku-4-5" run "$*" | glow
+          }
+          smart_cat() {
+            if [[ $1 == *.md ]]; then
+              PAGER='bat' glow -p "$1"
+            else
+              bat "$1"
+            fi
+          }
         '';
 
         oh-my-zsh = {
@@ -37,17 +50,19 @@
 
       programs.git = {
         enable = true;
-        userName = username;
-        userEmail = "corgodev@gmail.com";
-
-        extraConfig = {
+        settings = {
+          user.name = username;
+          user.email = "corgodev@gmail.com";
           init.defaultBranch = "main";
           pull.rebase = true;
           push.autoSetupRemote = true;
           core.autocrlf = "input";
         };
+      };
 
-        delta.enable = true;
+      programs.delta = {
+        enable = true;
+        enableGitIntegration = true;
       };
 
       programs.direnv = {

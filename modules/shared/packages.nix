@@ -9,6 +9,8 @@
     lunarvim
     ripgrep
     gh
+    bat
+    glow
 
     nixd # nix language server
   ];
