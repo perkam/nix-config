@@ -7,7 +7,7 @@
 
   homebrew = {
     enable = true;
-    
+
     casks = [
       "ghostty"
       "firefox"
@@ -24,9 +24,9 @@
       "alfred" # Required for phoenix space switcher
       "whatsapp"
     ];
-   
+
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
-  }; 
+  };
 }

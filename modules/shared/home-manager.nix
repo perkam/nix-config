@@ -5,6 +5,8 @@
     backupFileExtension = "backup";
 
     users.${username} = { ... }: {
+      imports = [ ./neovim.nix ];
+
       home.username = username;
       home.stateVersion = "25.05";
 
@@ -23,11 +25,10 @@
         shellAliases = {
           find = "fd";
           cat = "smart_cat";
-          nix-config = "lvim ~/projects/nix-config";
+          nix-config = "nvim ~/projects/nix-config";
         };
 
         initExtra = ''
-          export EDITOR="nvim"
           export LANG="en_US.UTF-8"
 
           ask() {
