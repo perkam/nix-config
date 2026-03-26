@@ -3,6 +3,7 @@
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/phoenix.nix
+    ../../modules/darwin/open-in-neovim.nix
     ../../modules/shared/packages.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared/home-manager.nix

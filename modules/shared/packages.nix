@@ -10,5 +10,6 @@
     bat
     glow
     nmap # provides ncat for Godot LSP connection
+
   ];
 }

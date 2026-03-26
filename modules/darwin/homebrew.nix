@@ -23,6 +23,9 @@
       "karabiner-elements"
       "alfred" # Required for phoenix space switcher
       "whatsapp"
+      "krita"
+      "notion"
+      "android-platform-tools"
     ];
 
     onActivation.cleanup = "zap";

@@ -4,11 +4,13 @@
     useUserPackages = true;
     backupFileExtension = "backup";
 
-    users.${username} = { ... }: {
+    users.${username} = { pkgs, ... }: {
       imports = [ ./neovim.nix ];
 
       home.username = username;
       home.stateVersion = "25.05";
+
+      home.packages = with pkgs; [ scrcpy ];
 
       programs.zsh = {
         enable = true;
@@ -25,7 +27,8 @@
         shellAliases = {
           find = "fd";
           cat = "smart_cat";
-          nix-config = "nvim ~/projects/nix-config";
+          nix-config =
+            "cwd=$(pwd) && cd ~/projects/nix-config/ && nvim && cd \${cwd}";
         };
 
         initExtra = ''
