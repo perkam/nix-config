@@ -53,6 +53,31 @@ const launchTerminal = `
   end tell
 `;
 
+const launchGhostty = `
+  tell application "Ghostty"
+    activate
+  end tell
+`;
+
+const launchNeovim = `
+  set homeDir to POSIX path of (path to home folder)
+  tell application "Ghostty"
+    activate
+    set cfg to new surface configuration
+    set initial working directory of cfg to homeDir
+    set win to new window with configuration cfg
+    set t to terminal 1 of selected tab of win
+    input text "nvim" to t
+    send key "enter" to t
+  end tell
+`;
+
+const launchFirefox = `
+  tell application "Firefox"
+    activate
+  end tell
+`;
+
 const launchFinder = `
   tell application "Finder"
     make new Finder window to (get new window target of Finder preferences)
@@ -116,8 +141,11 @@ const focus = [
   ['`', HYPER, ['Notable']],
   ['c', HYPER, ['Google Chrome', false, /^(?!Developer Tools)/, /Picture in Picture/, launchChrome]],
   ['d', HYPER, ['Google Chrome', true, /(Developer Tools)|(chrome-devtools)/, /Picture in Picture/, launchDevTools]],
-  ['v', HYPER, ['Code', false, false, false, launchVSC]],
-  ['t', HYPER, ['Terminal', false, false, false, launchTerminal, callbackTerminal]],
+  ['t', HYPER, ['Ghostty', false, false, false, launchGhostty]],
+  ['v', HYPER, ['Ghostty', false, false, false, launchNeovim]],
+  ['b', HYPER, ['Firefox', false, false, false, launchFirefox]],
+  // ['v', HYPER, ['Code', false, false, false, launchVSC]],
+  // ['t', HYPER, ['Terminal', false, false, false, launchTerminal, callbackTerminal]],
   // ['t', HYPER, ['Hyper', false, false, false, launchHyper, callbackHyper]],
   // ['t', HYPER, ['iTerm', false, false, false, launchiTerm, callbackiTerm]],
   ['f', HYPER, ['Finder', false, false, false, launchFinder]],

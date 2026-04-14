@@ -26,6 +26,12 @@
       "krita"
       "notion"
       "android-platform-tools"
+      "scribus"
+      "localsend"
+      "alt-tab"
+      "vlc"
+      "signal"
+      "telegram"
     ];
 
     onActivation.cleanup = "zap";
