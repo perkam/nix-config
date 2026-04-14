@@ -1,15 +1,13 @@
 { ... }: {
   launchd.agents.obsidian = {
-    enable = true;
-    config = {
+    serviceConfig = {
       ProgramArguments = [ "/usr/bin/open" "-a" "Obsidian" ];
       RunAtLoad = true;
     };
   };
 
   launchd.agents.spotify = {
-    enable = true;
-    config = {
+    serviceConfig = {
       ProgramArguments = [ "/usr/bin/open" "-a" "Spotify" ];
       RunAtLoad = true;
     };
