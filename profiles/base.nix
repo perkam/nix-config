@@ -44,6 +44,7 @@
           ../modules/home/shell
           ../modules/home/git.nix
           ../modules/home/tools.nix
+          ../modules/home/ssh.nix
         ];
 
         home.username = username;
