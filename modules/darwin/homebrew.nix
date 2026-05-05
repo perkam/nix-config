@@ -19,19 +19,17 @@
       "godot-mono"
       "dotnet-sdk" # Required by godot-mono
       "libreoffice"
-      "phoenix"
-      "karabiner-elements"
-      "alfred" # Required for phoenix space switcher
+      "nikitabobko/tap/aerospace"
       "whatsapp"
       "krita"
       "notion"
       "android-platform-tools"
       "scribus"
       "localsend"
-      "alt-tab"
       "vlc"
       "signal"
       "telegram"
+      "steam"
     ];
 
     onActivation.cleanup = "zap";

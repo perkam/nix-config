@@ -1,24 +1,8 @@
 # Base profile - minimal config for ALL machines (macOS and NixOS)
 # Contains core CLI tools and cross-platform home-manager config
-{
-  pkgs,
-  username,
-  pkgs-unstable,
-  email,
-  gitName,
-  atuinServer,
-  ...
-}:
-{
+{ pkgs, username, pkgs-unstable, email, gitName, atuinServer, ... }: {
   # Core CLI tools needed everywhere
-  environment.systemPackages = with pkgs; [
-    jq
-    fd
-    ripgrep
-    bat
-    glow
-    wireguard-tools
-  ];
+  environment.systemPackages = with pkgs; [ jq fd ripgrep bat glow ];
 
   # Home-manager configuration
   home-manager = {
@@ -28,27 +12,19 @@
 
     # Pass specialArgs to home-manager modules
     extraSpecialArgs = {
-      inherit
-        username
-        email
-        gitName
-        atuinServer
-        pkgs-unstable
-        ;
+      inherit username email gitName atuinServer pkgs-unstable;
     };
 
-    users.${username} =
-      { ... }:
-      {
-        imports = [
-          ../modules/home/shell
-          ../modules/home/git.nix
-          ../modules/home/tools.nix
-          ../modules/home/ssh.nix
-        ];
+    users.${username} = { ... }: {
+      imports = [
+        ../modules/home/shell
+        ../modules/home/git.nix
+        ../modules/home/tools.nix
+        ../modules/home/ssh.nix
+      ];
 
-        home.username = username;
-        home.stateVersion = "25.05";
-      };
+      home.username = username;
+      home.stateVersion = "25.05";
+    };
   };
 }

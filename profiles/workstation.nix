@@ -1,6 +1,6 @@
 # Workstation profile - development machines with full LSP, GUI tools, etc.
 # Extends base profile with dev packages and full neovim
-{ pkgs, username, ... }: {
+{ pkgs, pkgs-unstable, username, ... }: {
   imports = [ ./base.nix ];
 
   # Dev tools for workstations
@@ -11,6 +11,7 @@
     imagemagick
     nmap # provides ncat for Godot LSP connection
     uv
+    pkgs-unstable.gemini-cli
   ];
 
   # Extend home-manager config for workstations
