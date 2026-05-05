@@ -5,6 +5,7 @@
     ../../../modules/darwin/system.nix
     ../../../modules/darwin/homebrew.nix
     ../../../modules/darwin/aerospace.nix
+    ../../../modules/darwin/ghostty.nix
     ../../../modules/darwin/apps/open-in-neovim.nix
     ../../../modules/darwin/login-items.nix
   ];
