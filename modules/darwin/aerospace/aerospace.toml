@@ -8,7 +8,7 @@
 start-at-login = true
 
 # Normalizations
-enable-normalization-flatten-containers = true
+enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # Mouse follows focus
@@ -46,6 +46,8 @@ alt-equal = 'resize smart +50'
 alt-space = 'fullscreen'
 alt-f = 'layout floating tiling'
 alt-slash = 'layout tiles horizontal vertical'
+alt-v = 'split horizontal'
+alt-g = 'split vertical'
 
 # -- Switch to workspace (like Tab + Shift + 1/2/3) --
 alt-1 = 'workspace 1'
@@ -68,6 +70,12 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
+
+# -- Open browser --
+alt-b = 'exec-and-forget open -a Firefox'
+
+# -- Show shortcuts help --
+alt-shift-slash = '''exec-and-forget osascript -e 'display dialog "AeroSpace Shortcuts\n\nFocus:        alt + h/j/k/l\nMove:         alt+shift + h/j/k/l\nResize:       alt + -/=\nFullscreen:   alt + space\nFloat/Tile:   alt + f\nSplit H/V:    alt + /\n\nWorkspaces:   alt + 1-9\nMove to WS:   alt+shift + 1-9\nLast WS:      alt + tab\nBrowser:      alt + b\n\nService:      alt+shift + ;\nThis help:    alt+shift + /" with title "AeroSpace Help" buttons {"OK"} default button "OK"' '''
 
 # -- Cycle through windows --
 alt-tab = 'workspace-back-and-forth'

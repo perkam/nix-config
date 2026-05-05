@@ -30,6 +30,7 @@
       "signal"
       "telegram"
       "steam"
+      "keyclu"
     ];
 
     onActivation.cleanup = "zap";
