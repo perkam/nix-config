@@ -20,7 +20,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Homebrew integration for macOS casks
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew/a7760a3a83f7609f742861afb5732210fdc437ed";
+    nix-homebrew.inputs.brew-src.follows = "homebrew-brew";
+
+    # Pin Homebrew to master (fix for nil dep_type in cask_struct_generator, not yet tagged)
+    homebrew-brew.url = "github:Homebrew/brew";
+    homebrew-brew.flake = false;
 
     # Secrets management (for future use)
     agenix.url = "github:ryantm/agenix";

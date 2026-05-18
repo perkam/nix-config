@@ -40,6 +40,9 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 
+-- Godot integration (server pipe, breakpoints, formatting)
+require('godot').setup()
+
 -- [[ Basic Keymaps ]]
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -217,11 +220,41 @@ require('lazy').setup({
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = false,
+          never_show = { 'server.pipe' },
+          hide_by_pattern = { '*.uid' },
+        },
+        window = {
+          mappings = {
+            ['o'] = 'system_open',
+          },
         },
       },
       window = {
         position = 'left',
         width = 35,
+      },
+      commands = {
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          if vim.fn.has 'mac' == 1 then
+            -- macOs: open file in default application in the background.
+            vim.fn.jobstart({ 'open', path }, { detach = true })
+          elseif vim.fn.has 'win32' == 1 then
+            -- Windows: Without removing the file from the path, it opens in code.exe instead of explorer.exe
+            local p
+            local lastSlashIndex = path:match '^.+()\\[^\\]*$' -- Match the last slash and everything before it
+            if lastSlashIndex then
+              p = path:sub(1, lastSlashIndex - 1) -- Extract substring before the last slash
+            else
+              p = path -- If no slash found, return original path
+            end
+            vim.cmd('silent !start explorer ' .. p)
+          else
+            -- Linux: open file in default application
+            vim.fn.jobstart({ 'xdg-open', path }, { detach = true })
+          end
+        end,
       },
     },
   },
@@ -353,9 +386,7 @@ require('lazy').setup({
         gdscript = {
           cmd = { 'ncat', 'localhost', '6005' },
           filetypes = { 'gd', 'gdscript', 'gdscript3' },
-          root_dir = function(fname)
-            return require('lspconfig.util').root_pattern('project.godot')(fname)
-          end,
+          root_markers = { 'project.godot', '.git' },
         },
       }
 
@@ -496,7 +527,7 @@ require('lazy').setup({
     branch = 'main',
     config = function()
       local parsers = {
-        'bash', 'c', 'c_sharp', 'css', 'diff', 'gdscript', 'go', 'gomod', 'gosum',
+        'bash', 'c', 'c_sharp', 'css', 'diff', 'gdscript', 'gdshader', 'godot_resource', 'go', 'gomod', 'gosum',
         'hcl', 'html', 'javascript', 'json', 'lua', 'luadoc', 'markdown',
         'markdown_inline', 'nix', 'python', 'query', 'terraform', 'tsx',
         'typescript', 'vim', 'vimdoc', 'yaml',

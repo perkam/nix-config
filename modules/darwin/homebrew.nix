@@ -1,8 +1,9 @@
-{ username, ... }: {
+{ username, inputs, ... }: {
   nix-homebrew = {
     enable = true;
     user = username;
     autoMigrate = true;
+    package = inputs.homebrew-brew;
   };
 
   homebrew = {
@@ -31,6 +32,9 @@
       "telegram"
       "steam"
       "keyclu"
+      "blender"
+      "excalidrawz"
+      "obs"
     ];
 
     onActivation.cleanup = "zap";

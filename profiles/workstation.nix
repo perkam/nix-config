@@ -12,6 +12,7 @@
     nmap # provides ncat for Godot LSP connection
     uv
     pkgs-unstable.gemini-cli
+    just
   ];
 
   # Extend home-manager config for workstations

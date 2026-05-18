@@ -23,23 +23,6 @@
         "type": "github"
       }
     },
-    "brew-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774235677,
-        "narHash": "sha256-0ryNYmzDAeRlrzPTAgmzGH/Cgc8iv/LBN6jWGUANvIk=",
-        "owner": "Homebrew",
-        "repo": "brew",
-        "rev": "894a3d23ac0c8aaf561b9874b528b9cb2e839201",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Homebrew",
-        "ref": "5.1.1",
-        "repo": "brew",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -104,6 +87,22 @@
         "type": "github"
       }
     },
+    "homebrew-brew": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778146321,
+        "narHash": "sha256-HeBwuJmuBioZHyZqDOcf7W/xsMFupSD583v6I5Cl7a8=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "af835384ac574f76025adb38b292b04cecee1f1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -127,7 +126,9 @@
     },
     "nix-homebrew": {
       "inputs": {
-        "brew-src": "brew-src"
+        "brew-src": [
+          "homebrew-brew"
+        ]
       },
       "locked": {
         "lastModified": 1774720267,
@@ -140,6 +141,7 @@
       "original": {
         "owner": "zhaofengli",
         "repo": "nix-homebrew",
+        "rev": "a7760a3a83f7609f742861afb5732210fdc437ed",
         "type": "github"
       }
     },
@@ -195,6 +197,7 @@
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager_2",
+        "homebrew-brew": "homebrew-brew",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
