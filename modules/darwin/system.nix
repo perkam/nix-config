@@ -33,6 +33,9 @@
   system.defaults.finder._FXShowPosixPathInTitle = true; # full path in title
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark"; # dark mode
 
+  # Disable press-and-hold for VS Code (enables key repeat)
+  system.defaults.CustomUserPreferences."com.microsoft.VSCode".ApplePressAndHoldEnabled = false;
+
   # Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 }

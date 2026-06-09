@@ -143,6 +143,9 @@ require('lazy').setup({
     },
     config = function()
       require('telescope').setup {
+        defaults = {
+          file_ignore_patterns = { 'addons/', '%.uid$' },
+        },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
@@ -221,7 +224,7 @@ require('lazy').setup({
           hide_dotfiles = false,
           hide_gitignored = false,
           never_show = { 'server.pipe' },
-          hide_by_pattern = { '*.uid' },
+          never_show_by_pattern = { '*.uid' },
         },
         window = {
           mappings = {

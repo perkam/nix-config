@@ -25,6 +25,7 @@
       "krita"
       "notion"
       "android-platform-tools"
+      "android-studio"
       "scribus"
       "localsend"
       "vlc"
@@ -35,6 +36,8 @@
       "blender"
       "excalidrawz"
       "obs"
+      "visual-studio-code"
+      "karabiner-elements"
     ];
 
     onActivation.cleanup = "zap";

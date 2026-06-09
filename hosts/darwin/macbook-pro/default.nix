@@ -8,6 +8,7 @@
     ../../../modules/darwin/ghostty.nix
     ../../../modules/darwin/apps/open-in-neovim.nix
     ../../../modules/darwin/login-items.nix
+    ../../../modules/darwin/karabiner.nix
   ];
 
   # Global settings
