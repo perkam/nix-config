@@ -13,33 +13,24 @@
           parameters.delay_milliseconds_before_open_device = 1000;
           simple_modifications = [];
           fn_function_keys = [];
-          devices = [];
+          complex_modifications.rules = [];
           virtual_hid_keyboard.keyboard_type_v2 = "ansi";
-          complex_modifications = {
-            rules = [
-              {
-                description = "Swap right_control and right_option for Polish characters";
-                manipulators = [
-                  {
-                    type = "basic";
-                    from = {
-                      key_code = "right_control";
-                      modifiers.optional = [ "any" ];
-                    };
-                    to = [ { key_code = "right_option"; } ];
-                  }
-                  {
-                    type = "basic";
-                    from = {
-                      key_code = "right_option";
-                      modifiers.optional = [ "any" ];
-                    };
-                    to = [ { key_code = "right_control"; } ];
-                  }
-                ];
-              }
-            ];
-          };
+          devices = [
+            {
+              # USB Gaming Keyboard (SEMICO) - VID: 6700, PID: 38405
+              identifiers = {
+                is_keyboard = true;
+                vendor_id = 6700;
+                product_id = 38405;
+              };
+              simple_modifications = [
+                {
+                  from.key_code = "right_command";
+                  to = [ { key_code = "right_control"; } ];
+                }
+              ];
+            }
+          ];
         }
       ];
     };
